@@ -1,12 +1,11 @@
 import React from 'react';
 
-function Registry() {
+export default function Registry() {
   return (
     <div>
       <p>We're so excited to share this day with you and appreciate your generosity.</p>
-      <p>We've lived together for several years and have accumulated about everything we need. </p>
-      <p>The greatest gift you could give us is a once-in-a-lifetime experience together by contributing to our honeymoon fund. However, we have included a few upgrade items on this list if you'd prefer to gift us something more tangible.</p>
-      <p>The thing we're most excited about is to spend time with you on our special day! </p>
+      <p>The greatest gift you could give us is to contribute to our honeymoon where we will have a once-in-a-lifetime experience together in Chile.</p>
+      <p>We will be traveling to explore the Patagonia area where we will be spending a week hiking/snowshoeing (it will be winter there) through the Andes mountains.</p>
       <h2>
         <a
           className="App-link"
@@ -17,7 +16,19 @@ function Registry() {
           Venmo
         </a>
       </h2>
+      <h2>
+        <a
+          className="App-link"
+          href="https://paypal.me/marcandchristy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          PayPal
+        </a>
+      </h2>
 
+    <p>We've lived together for several years and have accumulated about everything we need. </p>
+     <p>If you'd prefer to gift us something more tangible, we have included a link to our registry below.</p>
       <h2>
         <a
           className="App-link"
@@ -38,8 +49,9 @@ function Registry() {
           Crate and Barrel
         </a>
       </h2>
+
+      <p>The thing we're most excited about is to spend time with you on our special day! </p>
+
     </div>
   );
 }
-
-export default Registry;

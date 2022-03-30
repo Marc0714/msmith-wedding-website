@@ -6,6 +6,7 @@ import Registry from './Registry';
 import Hotel from './Hotel';
 import ImageGallery from "./ImageGallery";
 import Contact from "./Contact";
+import RSVP from "./RSVP";
 
 import Typography from '@mui/material/Typography';
 import { Box, Tab, Tabs } from '@mui/material';
@@ -51,14 +52,17 @@ export default function NavBar() {
   };
 
   return (
-    <div className="NavBar">
-        <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="basic tabs example">
-          <Tab label="Itinerary" {...a11yProps(0)} />
-          <Tab label="Lodging" {...a11yProps(1)} />
-          <Tab label="Registry" {...a11yProps(2)} />
-          <Tab label="Photos" {...a11yProps(3)} />
-          <Tab label="Contact Info" {...a11yProps(4)} />
-        </Tabs>
+    <div>
+      <Box>
+      <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="basic tabs example">
+        <Tab label="Itinerary" {...a11yProps(0)} />
+        <Tab label="Lodging" {...a11yProps(1)} />
+        <Tab label="Registry" {...a11yProps(2)} />
+        <Tab label="Photos" {...a11yProps(3)} />
+        <Tab label="RSVP" {...a11yProps(4)} />
+        <Tab label="Contact Info" {...a11yProps(5)} />
+      </Tabs>
+      </Box>
       <TabPanel value={value} index={0}>
         <Itinerary />
       </TabPanel>
@@ -72,6 +76,9 @@ export default function NavBar() {
         <ImageGallery />
       </TabPanel>
       <TabPanel value={value} index={4}>
+        <RSVP />
+      </TabPanel>
+      <TabPanel value={value} index={5}>
         <Contact />
       </TabPanel>
     </div>

@@ -53,17 +53,14 @@ code {
 }
 .MuiTabs-scroller {
   flex-grow: 1;
-  margin: auto;
-  padding: 0;
 }
 
 .MuiTabs-flexContainer {
-  justify-content: center;
   margin: auto;
-  padding: 0;
 }
 
-.MuiTabs-root{
-  margin: auto;
-  padding: 0;
+.MuiBox-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
