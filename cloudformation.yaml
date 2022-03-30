@@ -1,0 +1,98 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >
+  Resources for hosting a static website in S3 & CloudFront.
+###############################################################################
+Parameters:
+###############################################################################
+
+  PriceClass:
+    Type: String
+    Description: The CloudFront distribution price class
+    Default: 'PriceClass_100'
+    AllowedValues:
+      - 'PriceClass_100'
+      - 'PriceClass_200'
+      - 'PriceClass_All'
+      
+###############################################################################
+Mappings:
+###############################################################################
+  "392614572346":
+    us-east-1:
+      BucketName: msmith-wedding-website
+      CertArn: arn:aws:acm:us-east-1:392614572346:certificate/8a60affb-9e59-494e-bc76-b9d87ad5b154
+      CName: 
+        - christy-marc.com
+      
+###############################################################################
+Resources:
+###############################################################################
+            
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases: !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", CName] 
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          CachedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          Compress: false
+          ForwardedValues:
+            QueryString: false
+            Headers:
+              - Access-Control-Request-Headers
+              - Access-Control-Request-Method
+              - Origin
+              - X-Frame-Options
+          TargetOriginId: !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", BucketName] 
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 300
+            ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+        Enabled: true
+        HttpVersion: http2
+        Origins:
+          - DomainName: !GetAtt Bucket.RegionalDomainName
+            Id: !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", BucketName] 
+            S3OriginConfig:
+              OriginAccessIdentity:
+                !Join [ "", [ "origin-access-identity/cloudfront/", !Ref CloudFrontOriginAccessIdentity ] ]
+        PriceClass: !Ref PriceClass
+        ViewerCertificate:
+          AcmCertificateArn:  !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", CertArn] 
+          MinimumProtocolVersion: 'TLSv1.2_2019'
+          SslSupportMethod: 'sni-only'
+
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", BucketName] 
+
+  Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", BucketName] 
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", BucketName] 
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: !Join [ "", [ "arn:aws:s3:::", !FindInMap [!Ref "AWS::AccountId", !Ref "AWS::Region", BucketName] , "/*" ] ]
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
