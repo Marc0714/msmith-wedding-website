@@ -23,7 +23,7 @@ Take note of Cert ARN for cloudformation template.
 ### Deploying CloudFormation Stack
 
 See attached cloudformation.yaml.
-In mappings section of template replace CertArn, BucketName, CName, and Account Number with your own values.
+In mappings section of template replace CertArn, BucketName, CName (domain name), and Account Number with your own values.
 
 I used mappings to enforce being deployed to us-east-1.
 
