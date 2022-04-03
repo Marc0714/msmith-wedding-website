@@ -1,8 +1,9 @@
 import React from 'react';
 
-function Hotel() {
+export default function Travel() {
   return (
     <div>
+      <h1>Hotels</h1>
       <h2>
         <a
           className="App-link"
@@ -14,6 +15,7 @@ function Hotel() {
         </a>
       </h2>
         <p>There is a block of rooms reserved under Christy Daniel. This is where Bride and Groom will be staying.</p>
+        <p>Reservation Number: 3244652815</p>
       <h2>
         <a
           className="App-link"
@@ -36,8 +38,9 @@ function Hotel() {
         </a>
       </h2>
           <p>1.8 Miles from Hilton Garden Inn </p>
+      <hr/>
+      <h1>Flight</h1>
+          <p>Recommend to fly into Denver airport and rent car from there.</p>
     </div>
   );
 }
-
-export default Hotel;

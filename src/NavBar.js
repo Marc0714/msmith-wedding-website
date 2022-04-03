@@ -3,7 +3,7 @@ import './Style.css';
 //Page Sections
 import Itinerary from './Itinerary';
 import Registry from './Registry';
-import Hotel from './Hotel';
+import Travel from './Travel';
 import ImageGallery from "./ImageGallery";
 import Contact from "./Contact";
 import RSVP from "./RSVP";
@@ -56,7 +56,7 @@ export default function NavBar() {
       <Box>
       <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons allowScrollButtonsMobile aria-label="basic tabs example">
         <Tab label="Itinerary" {...a11yProps(0)} />
-        <Tab label="Lodging" {...a11yProps(1)} />
+        <Tab label="Travel" {...a11yProps(1)} />
         <Tab label="Registry" {...a11yProps(2)} />
         <Tab label="Photos" {...a11yProps(3)} />
         <Tab label="RSVP" {...a11yProps(4)} />
@@ -67,7 +67,7 @@ export default function NavBar() {
         <Itinerary />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Hotel />
+        <Travel />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Registry />
