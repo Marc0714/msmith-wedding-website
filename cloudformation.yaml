@@ -20,7 +20,7 @@ Mappings:
   "392614572346":
     us-east-1:
       BucketName: msmith-wedding-website
-      CertArn: arn:aws:acm:us-east-1:392614572346:certificate/d73a92d9-7706-47be-b9ce-59747c9efdf6
+      CertArn: arn:aws:acm:us-east-1:392614572346:certificate/e69bc942-7c0c-4f77-9763-f52362210096
       CName: 
         - christy-marc.com
         - www.christy-marc.com
@@ -43,7 +43,8 @@ Resources:
             - GET
             - HEAD
             - OPTIONS
-          Compress: false
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  
+          Compress: true
           ForwardedValues:
             QueryString: false
             Headers:
