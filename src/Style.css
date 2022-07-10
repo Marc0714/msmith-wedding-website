@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #B2AC88;
 }
 
 code {
@@ -15,7 +16,6 @@ code {
 
 .App {
   text-align: center;
-  background-color: #B2AC88;
   color: black;
 }
 
