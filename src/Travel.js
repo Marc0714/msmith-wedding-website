@@ -3,6 +3,15 @@ import React from 'react';
 export default function Travel() {
   return (
     <div>
+    <h1>Directions to Vedauwoo</h1>
+        <p>From Laramie</p>
+        <p>Get on I-80 E from S 3rd Street</p>
+        <p>Follow I-80 E to Vedauwoo Glen Road in Buford</p>
+        <p>Take Exit 329 from I-80 E</p>
+        <p>Turn left toward Vedauwoo</p>
+        <p>Continue on Vedauwoo Glen Road to your destination</p>
+        <p>Park in the first parking lot on your left as you enter the park</p>
+      <hr/>
       <h1>Hotels</h1>
       <h2>
         <a
