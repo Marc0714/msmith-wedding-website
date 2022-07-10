@@ -7,6 +7,7 @@ import Travel from './Travel';
 import ImageGallery from "./ImageGallery";
 import Contact from "./Contact";
 import RSVP from "./RSVP";
+import Party from "./Party";
 
 import Typography from '@mui/material/Typography';
 import { Box, Tab, Tabs } from '@mui/material';
@@ -61,6 +62,7 @@ export default function NavBar() {
         <Tab label="Photos" {...a11yProps(3)} />
         <Tab label="RSVP" {...a11yProps(4)} />
         <Tab label="Contact Info" {...a11yProps(5)} />
+        <Tab label="Wedding Party" {...a11yProps(6)} />
       </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -80,6 +82,9 @@ export default function NavBar() {
       </TabPanel>
       <TabPanel value={value} index={5}>
         <Contact />
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        <Party />
       </TabPanel>
     </div>
   );
